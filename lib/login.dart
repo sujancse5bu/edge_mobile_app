@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,38 +29,66 @@ class _LoginScreenState extends State<LoginScreen> {
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Username"),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "Enter Username",
-                style: TextStyle(color: Colors.black45),
-              )
-            ],
-          ),
-          SizedBox(
+          getInputRow(label: 'Username', hint: 'Enter Username'),
+          const SizedBox(
             height: 20,
           ),
-          Row(
+          getInputRow(label: 'Password', hint: 'Enter Password'),
+          const SizedBox(
+            height: 30,
+          ),
+          Stack(
             children: [
-              Text("Password"),
-              SizedBox(
-                width: 10,
+              Container(
+                  height: 200,
+                  width: 300,
+                  // color: Colors.indigo,
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 10,
+                        color: Colors.black87,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: const Text('This is a container')),
+              Container(
+                height: 150,
+                width: 150,
+                color: Colors.red,
+                child: Text('Top Left'),
               ),
-              Text(
-                "Enter Password",
-                style: TextStyle(color: Colors.black45),
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  color: Colors.green,
+                  child: Text('Right Bottom'),
+                ),
               )
             ],
-          ),
+          )
         ],
       ),
+    );
+  }
+
+  Widget getInputRow({String? label, String? hint}) {
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(label.toString()),
+        SizedBox(
+          width: 10,
+        ),
+        Text(
+          hint.toString(),
+          style: TextStyle(color: Colors.black45),
+        )
+      ],
     );
   }
 }
