@@ -60,15 +60,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Text('Top Left'),
               ),
               Positioned(
-                right: 0,
-                bottom: 0,
+                right: 10,
+                bottom: 10,
                 child: Container(
                   height: 100,
                   width: 100,
                   color: Colors.green,
                   child: Text('Right Bottom'),
                 ),
-              )
+              ),
             ],
           )
         ],

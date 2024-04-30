@@ -1,3 +1,4 @@
+import 'package:edge_mobile_app/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:edge_mobile_app/login.dart';
 
@@ -19,6 +20,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const LoginScreen(),
+      initialRoute: '/signup',
+      routes: {
+        '/login': (BuildContext context) => const LoginScreen(),
+        '/signup': (BuildContext context) => const SignupScreen(),
+      },
     );
   }
 }
