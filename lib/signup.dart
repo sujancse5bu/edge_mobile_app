@@ -1,3 +1,4 @@
+import 'package:edge_mobile_app/login.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -66,6 +67,7 @@ class _SignupScreenState extends State<SignupScreen> {
             TextFormField(
                 style: TextStyle(fontSize: 16),
                 keyboardType: TextInputType.text,
+                obscureText: true,
                 onChanged: (value) {
                   print('password: $value');
                   setState(() {
@@ -78,6 +80,24 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintText: 'Enter Password',
                     hintStyle: TextStyle(color: Colors.grey),
                     errorText: userNameError.isEmpty ? null : userNameError)),
+            // ------------------------------
+            SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Sign Up'),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text('Already Have an account? '),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginScreen()));
+                },
+                child: Text('Try Login'))
           ],
         ),
       ),

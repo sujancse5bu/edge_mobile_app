@@ -9,6 +9,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late String userName = '';
+  late String email;
+  late String password;
+
+  late String userNameError = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,49 +35,64 @@ class _LoginScreenState extends State<LoginScreen> {
           )
         ],
       ),
-      body: Column(
-        children: [
-          getInputRow(label: 'Username', hint: 'Enter Username'),
-          const SizedBox(
-            height: 20,
-          ),
-          getInputRow(label: 'Password', hint: 'Enter Password'),
-          const SizedBox(
-            height: 30,
-          ),
-          Stack(
-            children: [
-              Container(
-                  height: 200,
-                  width: 300,
-                  // color: Colors.indigo,
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 10,
-                        color: Colors.black87,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: const Text('This is a container')),
-              Container(
-                height: 150,
-                width: 150,
-                color: Colors.red,
-                child: Text('Top Left'),
-              ),
-              Positioned(
-                right: 10,
-                bottom: 10,
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.green,
-                  child: Text('Right Bottom'),
-                ),
-              ),
-            ],
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(
+              'Login',
+              style: TextStyle(fontSize: 35),
+            ),
+            TextFormField(
+                style: TextStyle(fontSize: 16),
+                keyboardType: TextInputType.emailAddress,
+                onChanged: (value) {
+                  print('Email: $value');
+                  setState(() {
+                    email = value;
+                  });
+                },
+                decoration: InputDecoration(
+                    label: Text('Email'),
+                    icon: Icon(Icons.email),
+                    hintText: 'Enter Email',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    errorText: userNameError.isEmpty ? null : userNameError)),
+            TextFormField(
+                style: TextStyle(fontSize: 16),
+                keyboardType: TextInputType.text,
+                obscureText: true,
+                onChanged: (value) {
+                  print('password: $value');
+                  setState(() {
+                    password = value;
+                  });
+                },
+                decoration: InputDecoration(
+                    label: Text('Password'),
+                    icon: Icon(Icons.key),
+                    hintText: 'Enter Password',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    errorText: userNameError.isEmpty ? null : userNameError)),
+            // ------------------------------
+            SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Login'),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text('Don\'t have an account? '),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Try Signup'))
+          ],
+        ),
       ),
     );
   }
