@@ -1,3 +1,4 @@
+import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/login.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +86,9 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed('/home');
+              },
               child: Text('Sign Up'),
             ),
             SizedBox(

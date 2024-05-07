@@ -1,3 +1,4 @@
+import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/images.dart';
 import 'package:edge_mobile_app/signup.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        primarySwatch: Colors.deepPurple,
         useMaterial3: true,
       ),
       // home: const ImagesAndButton(),
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (BuildContext context) => const LoginScreen(),
         '/signup': (BuildContext context) => const SignupScreen(),
-        "/images": (BuildContext context) => const ImagesAndButton()
+        '/home': (BuildContext context) => const HomeScreen(),
+        '/images': (BuildContext context) => const ImagesAndButton(),
       },
     );
   }
