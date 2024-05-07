@@ -1,20 +1,19 @@
 import 'package:edge_mobile_app/common/navigation.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Settings> createState() => _SettingsState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
-          backgroundColor: Colors.blueGrey,
+          title: Text('Settings'),
         ),
         bottomNavigationBar: CustomBottomNavigationBar());
   }

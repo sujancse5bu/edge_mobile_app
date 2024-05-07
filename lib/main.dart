@@ -1,5 +1,7 @@
 import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/images.dart';
+import 'package:edge_mobile_app/search.dart';
+import 'package:edge_mobile_app/settings.dart';
 import 'package:edge_mobile_app/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:edge_mobile_app/login.dart';
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/login': (BuildContext context) => const LoginScreen(),
         '/signup': (BuildContext context) => const SignupScreen(),
         '/home': (BuildContext context) => const HomeScreen(),
+        '/search': (BuildContext context) => const SearchScreen(),
+        '/settings': (BuildContext context) => const Settings(),
         '/images': (BuildContext context) => const ImagesAndButton(),
       },
     );
