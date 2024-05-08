@@ -1,5 +1,6 @@
 import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/login.dart';
+import 'package:edge_mobile_app/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -93,7 +94,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 // email
                 String email = 'bu.cse@bu.ac.bd';
 
-                Navigator.of(context).pushNamed('/home');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        MainScreen(username: username, email: email)));
               },
               child: Text('Sign Up'),
             ),

@@ -16,8 +16,22 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  late String username;
+  late String email;
+  late List<Widget> screens = [];
 
-  var screens = [const HomeScreen(), const SearchScreen(), const Settings()];
+  @override
+  void initState() {
+    super.initState();
+    username = widget.username;
+    email = widget.email;
+
+    screens = [
+      HomeScreen(username: username),
+      const SearchScreen(),
+      const Settings(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +49,10 @@ class _MainScreenState extends State<MainScreen> {
             _selectedIndex = value;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Home',
+              label: widget.username,
               backgroundColor: Colors.green),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
