@@ -87,6 +87,12 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
             ElevatedButton(
               onPressed: () {
+                // username
+                String username = 'BU CSE';
+
+                // email
+                String email = 'bu.cse@bu.ac.bd';
+
                 Navigator.of(context).pushNamed('/home');
               },
               child: Text('Sign Up'),

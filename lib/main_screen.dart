@@ -5,7 +5,10 @@ import 'package:edge_mobile_app/settings.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final String username;
+  final String email;
+
+  const MainScreen({super.key, required this.username, required this.email});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
