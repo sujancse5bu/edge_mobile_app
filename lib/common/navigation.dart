@@ -22,10 +22,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         print('selected value: $value');
         if (value == 0) {
           // navigate to home
-          Navigator.of(context).pushNamedAndRemoveUntil('/home');
+          Navigator.of(context).pushReplacementNamed('/home');
         } else if (value == 1) {
           // navigate to search
-          Navigator.of(context).pushNamedAndRemoveUntil('/search');
+          Navigator.of(context).pushReplacementNamed('/search');
         } else if (value == 2) {
           // navigate to settings
           Navigator.of(context).pushReplacementNamed('/settings');

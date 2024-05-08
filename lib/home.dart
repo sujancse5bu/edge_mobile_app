@@ -12,10 +12,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-          backgroundColor: Colors.blueGrey,
-        ),
-        bottomNavigationBar: CustomBottomNavigationBar());
+      appBar: AppBar(
+        title: Text('Home'),
+        backgroundColor: Colors.blueGrey,
+      ),
+    );
   }
 }

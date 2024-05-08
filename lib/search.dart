@@ -12,9 +12,9 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Search'),
-        ),
-        bottomNavigationBar: CustomBottomNavigationBar());
+      appBar: AppBar(
+        title: Text('Search'),
+      ),
+    );
   }
 }
