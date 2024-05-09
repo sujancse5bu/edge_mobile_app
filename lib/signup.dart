@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/login.dart';
 import 'package:edge_mobile_app/main_screen.dart';
@@ -87,6 +89,17 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 30,
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(5)))),
+                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                  backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
+                  textStyle: MaterialStateProperty.all(const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  )),
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+                      horizontal: 30, vertical: 15))),
               onPressed: () {
                 // username
                 String username = 'BU CSE';
