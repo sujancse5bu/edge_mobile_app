@@ -170,7 +170,24 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                       SizedBox(width: 5),
                       ElevatedButton(
                         style: buttonStyle,
-                        onPressed: () => (print("onPressed")),
+                        onPressed: () {
+                          print('input1: $input1');
+                          print('input2: $input2');
+                          double tempOutput = 0;
+                          if (_operator == '+') {
+                            tempOutput = (input1 + input2).toDouble();
+                          } else if (_operator == '-') {
+                            tempOutput = (input1 - input2).toDouble();
+                          } else if (_operator == '/') {
+                            tempOutput = input1 / input2;
+                          } else if (_operator == '*') {
+                            tempOutput = (input1 * input2).toDouble();
+                          }
+
+                          setState(() {
+                            _output = tempOutput.toString();
+                          });
+                        },
                         child: Text("="),
                       ),
                       SizedBox(width: 5),
