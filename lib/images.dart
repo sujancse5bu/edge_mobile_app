@@ -16,24 +16,30 @@ class _ImagesAndButtonState extends State<ImagesAndButton> {
         appBar: AppBar(
           title: Text("ListView & GridView"),
         ),
-        body: listViewBuilder);
+        body: gridViewBuilder);
   }
 
   static List<String> listViewItems = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-    'Item 11',
-    'Item 12',
-    'Item 23',
+    'https://plus.unsplash.com/premium_photo-1678112180202-cd950dbe5a35?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1517404215738-15263e9f9178?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dXJsfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dXJsfGVufDB8fDB8fHww',
+    'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHVybHxlbnwwfHwwfHx8MA%3D%3D',
+    'https://plus.unsplash.com/premium_photo-1683865776032-07bf70b0add1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHVybHxlbnwwfHwwfHx8MA%3D%3D',
   ];
+
+  Widget gridViewBuilder = GridView.builder(
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, mainAxisSpacing: 10, crossAxisSpacing: 10),
+    itemCount: listViewItems.length,
+    itemBuilder: (context, index) {
+      return Column(
+        children: [
+          // Text(listViewItems[index]),
+          Image.network(listViewItems[index])
+        ],
+      );
+    },
+  );
 
   //https://picsum.photos/200/300
   Widget listViewBuilder = ListView.builder(
