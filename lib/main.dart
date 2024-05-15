@@ -1,3 +1,4 @@
+import 'package:edge_mobile_app/calculator.dart';
 import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/images.dart';
 import 'package:edge_mobile_app/main_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const ImagesAndButton(),
-      initialRoute: '/signup',
+      initialRoute: '/calculator',
       routes: {
         '/login': (BuildContext context) => const LoginScreen(),
         '/signup': (BuildContext context) => const SignupScreen(),
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/search': (BuildContext context) => const SearchScreen(),
         '/settings': (BuildContext context) => const Settings(),
         '/images': (BuildContext context) => const ImagesAndButton(),
+        '/calculator': (BuildContext context) => const SimpleCalculator(),
       },
     );
   }
