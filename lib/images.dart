@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ImagesAndButton extends StatefulWidget {
   const ImagesAndButton({super.key});
@@ -35,11 +36,23 @@ class _ImagesAndButtonState extends State<ImagesAndButton> {
       return Column(
         children: [
           // Text(listViewItems[index]),
-          Image.network(listViewItems[index])
+          Image.network(listViewItems[index]),
+          ElevatedButton(
+              onPressed: () {
+                handleLaunchURL(listViewItems[index]);
+              },
+              child: Text('Click Here'))
         ],
       );
     },
   );
+
+  static Future<void> handleLaunchURL(String _url) async {
+    Uri _uri = Uri.parse(_url);
+    if (!await launchUrl(_uri)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
 
   //https://picsum.photos/200/300
   Widget listViewBuilder = ListView.builder(
