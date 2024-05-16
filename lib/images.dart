@@ -69,47 +69,47 @@ class _ImagesAndButtonState extends State<ImagesAndButton> {
     children: [
       Container(
         color: Colors.black12,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 1'),
       ),
       Container(
         color: Colors.black26,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 2'),
       ),
       Container(
         color: Colors.black12,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 3'),
       ),
       Container(
         color: Colors.black26,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 3'),
       ),
       Container(
         color: Colors.black12,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 4'),
       ),
       Container(
         color: Colors.black26,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 5'),
       ),
       Container(
         color: Colors.black26,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 3'),
       ),
       Container(
         color: Colors.black12,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 4'),
       ),
       Container(
         color: Colors.black26,
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Text('Item 5'),
       ),
     ],

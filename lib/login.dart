@@ -79,7 +79,21 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('Warning!!'),
+                      icon: Icon(Icons.warning),
+                      content: Container(
+                        child: Text(
+                            'Invalid Credentials!! Please check your email or password.'),
+                      ),
+                    );
+                  },
+                );
+              },
               child: Text('Login'),
             ),
             SizedBox(

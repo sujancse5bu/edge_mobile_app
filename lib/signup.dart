@@ -4,6 +4,14 @@ import 'package:edge_mobile_app/home.dart';
 import 'package:edge_mobile_app/login.dart';
 import 'package:edge_mobile_app/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+
+class Interest {
+  final String title;
+  final int credit;
+  Interest({required this.credit, required this.title});
+}
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -19,6 +27,18 @@ class _SignupScreenState extends State<SignupScreen> {
 
   late String userNameError = '';
 
+  final List<Interest> _interests = [
+    Interest(credit: 3, title: "Programming"),
+    Interest(credit: 1, title: "Robotics"),
+    Interest(credit: 2, title: "Internet of Things"),
+    Interest(credit: 5, title: "Networking"),
+    Interest(credit: 2, title: "Hacking"),
+    Interest(credit: 3, title: "Cyber Security"),
+    Interest(credit: 1, title: "Machine Learning"),
+  ];
+
+  List<Interest> _selectedInterests = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +48,18 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
+        child: ListView(
           children: [
-            Text(
-              'Welcome',
-              style: TextStyle(fontSize: 35),
+            Center(
+              child: Text(
+                'Welcome',
+                style: GoogleFonts.concertOne(
+                  textStyle: TextStyle(fontSize: 35),
+                  fontSize: 48,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
             ),
             TextFormField(
                 style: TextStyle(fontSize: 16),
@@ -84,6 +111,27 @@ class _SignupScreenState extends State<SignupScreen> {
                     hintText: 'Enter Password',
                     hintStyle: TextStyle(color: Colors.grey),
                     errorText: userNameError.isEmpty ? null : userNameError)),
+            // ------------
+
+            SizedBox(
+              height: 30,
+            ),
+            MultiSelectDialogField(
+              buttonIcon: const Icon(Icons.cast_for_education),
+              buttonText: const Text('Select Interests'),
+              items:
+                  _interests.map((e) => MultiSelectItem(e, e.title)).toList(),
+              listType: MultiSelectListType.CHIP,
+              onConfirm: (values) {
+                _selectedInterests = values;
+              },
+              onSelectionChanged: (p0) {
+                print('on selected change: ${p0.length}');
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    backgroundColor: Colors.redAccent,
+                    content: Text('${p0.length} interest(s) are selected.')));
+              },
+            ),
             // ------------------------------
             SizedBox(
               height: 30,
