@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
       body: screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.orangeAccent,
         selectedFontSize: 20,
         selectedItemColor: Colors.white,
         onTap: (value) {
@@ -49,10 +49,10 @@ class _MainScreenState extends State<MainScreen> {
             _selectedIndex = value;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: widget.username,
+              label: 'Home',
               backgroundColor: Colors.green),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(

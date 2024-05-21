@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const ImagesAndButton(),
-      initialRoute: '/signup',
+      initialRoute: '/home',
       routes: {
         '/login': (BuildContext context) => const LoginScreen(),
         '/signup': (BuildContext context) => const SignupScreen(),

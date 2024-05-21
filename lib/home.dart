@@ -10,17 +10,50 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading = false;
+  String name = '';
+
+  Future<String> getNameFromDatabase() async {
+    await Future.delayed(const Duration(seconds: 5));
+    return 'BU CSE';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.orangeAccent,
       ),
-      body: Center(
-        child: Text(
-          widget.username ?? '',
-          style: TextStyle(fontSize: 30),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                  onPressed: () async {
+                    setState(() {
+                      isLoading = true;
+                      name = '';
+                    });
+                    String _name = await getNameFromDatabase();
+                    setState(() {
+                      isLoading = false;
+                      name = _name;
+                    });
+                    // print('name: $_name');
+                  },
+                  child: const Text('Get Name')),
+              const SizedBox(
+                height: 30,
+              ),
+              if (isLoading)
+                const CircularProgressIndicator(
+                  strokeWidth: 5,
+                ),
+              Text(name)
+            ],
+          ),
         ),
       ),
     );
