@@ -1,4 +1,8 @@
-import 'package:edge_mobile_app/common/navigation.dart';
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,10 +16,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
   String name = '';
+  List<dynamic> users = [];
 
   Future<String> getNameFromDatabase() async {
     await Future.delayed(const Duration(seconds: 5));
     return 'BU CSE';
+  }
+
+  Future<void> getUsersFromDB() async {
+    try {
+      Uri uri = Uri.parse('https://jsonplaceholder.typicode.com/users');
+      http.Response response = await http.get(uri);
+      // print('response body: ${response.body}');
+      List<dynamic> decoded = json.decode(response.body);
+      inspect(decoded);
+      setState(() {
+        users = decoded;
+        isLoading = false;
+      });
+    } catch (e) {
+      print('getting user error: ${e.toString()}');
+    }
   }
 
   @override
@@ -27,35 +48,74 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Center(
-          child: Column(
-            children: [
-              ElevatedButton(
-                  onPressed: () async {
-                    setState(() {
-                      isLoading = true;
-                      name = '';
-                    });
-                    String _name = await getNameFromDatabase();
-                    setState(() {
-                      isLoading = false;
-                      name = _name;
-                    });
-                    // print('name: $_name');
-                  },
-                  child: const Text('Get Name')),
-              const SizedBox(
-                height: 30,
-              ),
-              if (isLoading)
-                const CircularProgressIndicator(
+        child: ListView(
+          children: [
+            ElevatedButton(
+                onPressed: () async {
+                  setState(() {
+                    isLoading = true;
+                  });
+                  await getUsersFromDB();
+                  // setState(() {
+                  //   name = '';
+                  // });
+                  // String _name = await getNameFromDatabase();
+                  // setState(() {
+                  //   name = _name;
+                  // });
+                  // print('name: $_name');
+                },
+                child: const Text('Get Name')),
+            const SizedBox(
+              height: 30,
+            ),
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(
                   strokeWidth: 5,
                 ),
-              Text(name)
-            ],
-          ),
+              ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: users.length,
+              itemBuilder: (context, index) {
+                return Text(users[index]['name']);
+              },
+            )
+          ],
         ),
       ),
     );
   }
 }
+// SingleChildScrollView(
+//         physics: const ScrollPhysics(),
+//         child: Column(
+//           children: [
+//             // ElevatedButton(
+//             //     onPressed: () async {
+//             //       setState(() {
+//             //         isLoading = true;
+//             //       });
+//             //       await getUsersFromDB();
+//             //       // setState(() {
+//             //       //   name = '';
+//             //       // });
+//             //       // String _name = await getNameFromDatabase();
+//             //       // setState(() {
+//             //       //   name = _name;
+//             //       // });
+//             //       // print('name: $_name');
+//             //     },
+//             //     child: const Text('Get Name')),
+//             // const SizedBox(
+//             //   height: 30,
+//             // ),
+//             // if (isLoading)
+//             //   const CircularProgressIndicator(
+//             //     strokeWidth: 5,
+//             //   ),
+            
+//           ],
+//         ),
+//       )
