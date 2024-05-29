@@ -1,5 +1,10 @@
+import 'dart:convert';
+
+import 'package:edge_mobile_app/models/LoginUser.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,10 +15,46 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late String userName = '';
-  late String email;
-  late String password;
+  late String email = '';
+  late String password = '';
 
   late String userNameError = '';
+
+  Future<void> handleLoginPress() async {
+    // await
+    if (!EmailValidator.validate(email)) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Warning!!'),
+            icon: Icon(Icons.warning),
+            content: Container(
+              child: Text('Invalid Email. Please enter a valid email.'),
+            ),
+          );
+        },
+      );
+      return;
+    }
+    print('sending login request....');
+    Uri uri = Uri.parse(
+        'https://task-management-backend-vhcq.onrender.com/api/v1/login');
+
+    var payload = {"email": email, "password": password};
+
+    http.Response response = await http.post(uri, body: payload);
+    print("login status code: ${response.statusCode}");
+    print("login response body: ${response.body}"); //string
+    dynamic decoded = json.decode(response.body); // map
+
+    LoginUser loginUser = LoginUser.fromJson(decoded['data']);
+    print(loginUser.email);
+    print(loginUser.firstName);
+    print(loginUser.lastName);
+
+    print('token: ${decoded['token']}');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,19 +121,20 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             ElevatedButton(
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text('Warning!!'),
-                      icon: Icon(Icons.warning),
-                      content: Container(
-                        child: Text(
-                            'Invalid Credentials!! Please check your email or password.'),
-                      ),
-                    );
-                  },
-                );
+                handleLoginPress();
+                // showDialog(
+                //   context: context,
+                //   builder: (context) {
+                //     return AlertDialog(
+                //       title: Text('Warning!!'),
+                //       icon: Icon(Icons.warning),
+                //       content: Container(
+                //         child: Text(
+                //             'Invalid Credentials!! Please check your email or password.'),
+                //       ),
+                //     );
+                //   },
+                // );
               },
               child: Text('Login'),
             ),

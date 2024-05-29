@@ -57,68 +57,63 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor: Colors.orangeAccent,
-      ),
-      body: ListView(
-        children: [
-          if (isLoading)
-            const Center(
-              child: CircularProgressIndicator(
-                strokeWidth: 5,
-              ),
-            ),
-          FutureBuilder(
-            future: futureUsers,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  List<User> tempUsers = snapshot.data!;
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: tempUsers.length,
-                    itemBuilder: (context, index) {
-                      User user = tempUsers[index];
-                      return Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 20),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.orangeAccent, width: 1),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('User Id: ${user.id}'),
-                              Text('Name: ${user.username}'),
-                              Text('Email: ${user.email.toLowerCase()}'),
-                              Text(
-                                  'Address: Street-${user.address.street} City-${user.address.city} Zip Code-${user.address.zipcode}'),
-                            ],
-                          ),
-                        ),
+        appBar: AppBar(
+          title: Text('Home'),
+          backgroundColor: Colors.orangeAccent,
+        ),
+        body: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(
+                  strokeWidth: 5,
+                ),
+              )
+            : FutureBuilder(
+                future: futureUsers,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      List<User> tempUsers = snapshot.data!;
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: tempUsers.length,
+                        itemBuilder: (context, index) {
+                          User user = tempUsers[index];
+                          return Expanded(
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 20),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.orangeAccent, width: 1),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20))),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('User Id: ${user.id}'),
+                                  Text('Name: ${user.username}'),
+                                  Text('Email: ${user.email.toLowerCase()}'),
+                                  Text(
+                                      'Address: Street-${user.address.street} City-${user.address.city} Zip Code-${user.address.zipcode}'),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                       );
-                    },
-                  );
-                }
-                if (snapshot.hasError) {
-                  return Text(snapshot.error.toString());
-                }
-              }
-              return Text(snapshot.data!.length.toString());
-            },
-          )
-        ],
-      ),
-    );
+                    }
+                    if (snapshot.hasError) {
+                      return Text(snapshot.error.toString());
+                    }
+                  }
+                  return Text(snapshot.data!.length.toString());
+                },
+              ));
   }
 }
 // SingleChildScrollView(
