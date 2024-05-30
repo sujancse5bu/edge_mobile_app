@@ -5,6 +5,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:localstorage/localstorage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -54,6 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
     print(loginUser.lastName);
 
     print('token: ${decoded['token']}');
+    localStorage.setItem('access-token', decoded['token']);
+    Navigator.of(context).pushNamed('/home');
   }
 
   @override

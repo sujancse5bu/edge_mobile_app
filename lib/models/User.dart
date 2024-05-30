@@ -11,6 +11,7 @@ class User {
       required this.address});
 
   factory User.fromJson(Map<String, dynamic> json) {
+    //json = user
     return User(
         id: json['id'],
         username: json['username'],

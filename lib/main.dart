@@ -7,8 +7,12 @@ import 'package:edge_mobile_app/settings.dart';
 import 'package:edge_mobile_app/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:edge_mobile_app/login.dart';
+import 'package:localstorage/localstorage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initLocalStorage();
+
   runApp(const MyApp());
 }
 
