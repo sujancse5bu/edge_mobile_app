@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Text('Don\'t have an account? '),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(context).pushNamed('/signup');
                 },
                 child: Text('Try Signup'))
           ],

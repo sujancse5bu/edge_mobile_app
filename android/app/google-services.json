@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845784597777",
+    "project_id": "edgemobileappbucse",
+    "storage_bucket": "edgemobileappbucse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845784597777:android:2e09b695a966dbbf7238b0",
+        "android_client_info": {
+          "package_name": "com.example.edge_mobile_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFaoozSLXtki0nUnEBGhLmrJhQZESwJ8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
